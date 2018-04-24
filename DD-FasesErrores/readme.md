@@ -42,5 +42,16 @@ OBJETIVO: Identificar las fases de traducción y errores.
 17. Se genera el hello6.txt. La salida es :"La respuesta es 42".
 18. Preprocesa hello7.c, en éste caso, es el programa invocado por el compilador y procesa directivas, se procesa el printf() y el main(). La salida es hello7.i.
 19. Se compila hello7.i. Se genera el código ensamblador. La salida es hello7.s.
+        C:\Users\NMCUELLO\Documents\Nico\Facultad\ssl>gcc hello7.i -S -std=c11
+          hello7.i: In function 'main':
+        hello7.i:3:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+          printf("La respuesta es %d\n", i);
+          ^~~~~~
+        hello7.i:3:2: warning: incompatible implicit declaration of built-in function 'printf'
+        hello7.i:3:2: note: include '<stdio.h>' or provide a declaration of 'printf'
+    
+    Declaración implícita. El vinculador lo busca en la biblioteca estándar.
 20. Se ensambla hello7.s en hello7.o.
-21. Se vincula hello7.o con la biblioteca estándar. Error por consola! La función printf() no se reconoce.
+21. Se vincula hello7.o con la biblioteca estándar:
+    Funciona porque la declaración es implícita, el vinculador lo busca en la biblioteca estándar. C11 lo permite.
+
