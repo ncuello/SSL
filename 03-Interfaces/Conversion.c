@@ -1,3 +1,8 @@
+/*  Conversion.c
+    02-Interfaces & Makefiles
+    Grupo 1
+    30052018
+*/
 #include "Conversion.h"
 
 double Celsius (double fahr) {        /*convierte a Celsius*/

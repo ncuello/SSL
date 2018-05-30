@@ -1,5 +1,4 @@
-/*
-    ConversionTest.c
+/*  ConversionTest.c
     02-Interfaces & Makefiles
     Grupo 1
     28052018
@@ -9,7 +8,9 @@
 #include <assert.h>   
 #include "Conversion.h"
 
-char rango(double, double);
+typedef enum {false, true} bool;
+
+bool CasiIgual(double, double, double);
 void pruebas(void);
 
 
@@ -18,14 +19,14 @@ int main(){
 }
 
 void pruebas(void){
-	assert(rango(0.0, Celsius(32.0)));
-	assert(rango(280.0, Celsius(536.0)));
-	assert(rango(120.0, Celsius(248.0)));
-	assert(rango(32.0, Fahrenheit(0.0)));
-	assert(rango(536.0, Fahrenheit(280.0)));
-	assert(rango(248.0, Fahrenheit(120.0)));
+	assert(CasiIgual(0.0, Celsius(32.0),0.01));
+	assert(CasiIgual(280.0, Celsius(536.0),0.01));
+	assert(CasiIgual(120.0, Celsius(248.0),0.01));
+	assert(CasiIgual(32.0, Fahrenheit(0.0),0.01));
+	assert(CasiIgual(536.0, Fahrenheit(280.0),0.01));
+	assert(CasiIgual(248.0, Fahrenheit(120.0),0.01));
 }
 
-char rango(double temperaturaA, double temperaturaB){
-	return ((temperaturaA + 1.0 >= temperaturaB) && (temperaturaA - 1.0 <= temperaturaB));
+bool CasiIgual(double temperaturaA, double temperaturaB, double rango){
+	return ((temperaturaA + rango >= temperaturaB) && (temperaturaA - rango <= temperaturaB));
 }
